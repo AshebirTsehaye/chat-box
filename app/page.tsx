@@ -54,7 +54,7 @@ export default function ChatBox() {
     <div className="min-h-screen bg-white flex items-center justify-center p-4">
       <div className="w-full max-w-4xl relative">
         <div className="flex items-center justify-center min-h-[600px] pt-8">
-          <Card className="w-full max-w-3xl shadow-md">
+          <Card className="w-full max-w-2xl shadow-none border-none">
             <CardContent className="p-4 space-y-3">
               {messages.map((msg) => (
                 <div
@@ -97,15 +97,15 @@ export default function ChatBox() {
 
                 <div className="flex items-center justify-between pt-1">
                   <div className="flex items-center space-x-2 text-gray-500">
-                    <Image src="/chatbox-icon.png" alt="custom icon" width={24} height={24} className="pr-1"/>
-                    <Image src="/star-icon.png" alt="custom icon" width={24} height={24} className="pr-1"/>
+                    <img src="/chatbox-icon.png" alt="custom icon" width={24} height={24} className="pr-1"/>
+                    <img src="/star-icon.png" alt="custom icon" width={24} height={24} className="pr-1"/>
                     <Paperclip size={18} className="pr-1"/>
                     <Smile size={18} className="pr-1"/>
                     <AtSign size={18} className="pr-1"/>
-                    <Image src="/square-pen-icon.png" alt="custom icon" width={24} height={24} className="pr-1"/>
+                    <img src="/square-pen-icon.png" alt="custom icon" width={24} height={24} className="pr-1"/>
                     <div className="w-px h-5 bg-gray-300 mx-3 pr-1"></div>
                     <div className="flex items-center space-x-1 text-xs">
-                      <Image src="/double-start-icon.png" alt="custom icon" width={26} height={26} />
+                      <img src="/double-start-icon.png" alt="custom icon" width={26} height={26} />
                       <span>Quick reply with AI</span>
                     </div>
                   </div>
