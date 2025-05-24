@@ -54,7 +54,7 @@ export default function ChatBox() {
     <div className="min-h-screen bg-white flex items-center justify-center p-4">
       <div className="w-full max-w-4xl relative">
         <div className="flex items-center justify-center min-h-[600px] pt-8">
-          <Card className="w-full max-w-2xl shadow-none border-none">
+          <Card className="w-full max-w-4xl shadow-none border-none">
             <CardContent className="p-4 space-y-3">
               {messages.map((msg) => (
                 <div
