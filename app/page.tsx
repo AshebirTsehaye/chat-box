@@ -7,8 +7,15 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Paperclip, Smile, RefreshCcw, AtSign, } from 'lucide-react'
 
+interface Message {
+  id: number
+  sender: string
+  text: string
+  type?: string
+}
+
 export default function ChatBox() {
-  const [messages, setMessages] = useState([
+  const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
       sender: 'Vanilla AI',
@@ -21,26 +28,26 @@ export default function ChatBox() {
 
   const sendMessage = () => {
     if (!inputMessage.trim()) return
-    setMessages((prev) => [...prev, { id: Date.now(), sender: 'You', text: inputMessage }])
+    setMessages((prev: Message[]) => [...prev, { id: Date.now(), sender: 'You', text: inputMessage }])
     setInputMessage('')
   }
 
   const replyWithSuggested = () => {
     const suggested = messages.find((m) => m.type === 'suggested')
     if (suggested) {
-      setMessages((prev) => [...prev, { id: Date.now(), sender: 'You', text: suggested.text }])
+      setMessages((prev: Message[]) => [...prev, { id: Date.now(), sender: 'You', text: suggested.text }])
     }
   }
 
   const regenerateSuggestion = () => {
-    const newSuggestion = {
+    const newSuggestion: Message = {
       id: Date.now(),
       sender: 'Vanilla AI',
       type: 'suggested',
       text:
         "Thanks for reaching out. We're happy to assist with a refund. Could you share your order number or the email used to make the purchase?",
     }
-    setMessages((prev) => prev.map((msg) => (msg.type === 'suggested' ? newSuggestion : msg)))
+    setMessages((prev: Message[]) => prev.map((msg) => (msg.type === 'suggested' ? newSuggestion : msg)))
   }
 
   return (
