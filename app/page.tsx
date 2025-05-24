@@ -103,10 +103,10 @@ export default function ChatBox() {
                     <Smile size={18} className="pr-1"/>
                     <AtSign size={18} className="pr-1"/>
                     <img src="/square-pen-icon.png" alt="custom icon" width={24} height={24} className="pr-1"/>
-                    <div className="w-px h-5 bg-gray-300 mx-3 pr-1"></div>
+                    <div className="w-[1.5px] h-5 bg-gray-300 mx-3"></div>
                     <div className="flex items-center space-x-1 text-xs">
                       <img src="/double-start-icon.png" alt="custom icon" width={26} height={26} />
-                      <span>Quick reply with AI</span>
+                      <span className="text-black">Quick reply with AI</span>
                     </div>
                   </div>
 
