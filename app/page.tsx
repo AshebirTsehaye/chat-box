@@ -5,8 +5,7 @@ import Image from 'next/image'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { Textarea } from '@/components/ui/textarea'
-import { Paperclip, Smile, SendHorizonal, RefreshCcw, Sparkles, AtSign, SquarePen } from 'lucide-react'
+import { Paperclip, Smile, RefreshCcw, AtSign, } from 'lucide-react'
 
 export default function ChatBox() {
   const [messages, setMessages] = useState([
