@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { Paperclip, Smile, RefreshCcw, AtSign, } from 'lucide-react'
+import { Paperclip, Smile, RefreshCcw, AtSign } from 'lucide-react'
 
 interface Message {
   id: number
@@ -52,10 +52,10 @@ export default function ChatBox() {
 
   return (
     <div className="min-h-screen bg-white flex items-center justify-center p-4">
-      <div className="w-full max-w-4xl relative">
+      <div className="w-full max-w-4xl mx-auto relative">
         <div className="flex items-center justify-center min-h-[600px] pt-8">
-          <Card className="w-full max-w-4xl shadow-none border-none">
-            <CardContent className="p-4 space-y-3">
+          <Card className="w-full max-w-3xl border-none shadow-none">
+            <CardContent className="p-0 space-y-3">
               {messages.map((msg) => (
                 <div
                   key={msg.id}
@@ -64,14 +64,18 @@ export default function ChatBox() {
                   }`}
                 >
                   <div className="flex justify-between items-center text-xs font-semibold text-gray-700">
-                    <span>{msg.sender} {msg.type === 'suggested' && <span className="text-gray-400">Suggested</span>}</span>
+                     <span className="text-black font-semibold">
+                      {msg.sender}{' '}
+                      {msg.type === 'suggested' && <span className="text-gray-400 font-normal ml-1">Suggested</span>}
+                    </span>
                     {msg.type === 'suggested' && (
-                      <button
-                        onClick={regenerateSuggestion}
-                        className="flex items-center gap-1 text-gray-500 hover:text-gray-700 text-xs"
+                    <button
+                      onClick={regenerateSuggestion}
+                      className="flex items-center gap-1 px-3 py-1.5 bg-[#E8F0FE] rounded-md text-black font-medium hover:bg-[#d9e7fd]"
                       >
-                        <RefreshCcw size={14} /> Regenerate
-                      </button>
+                      <RefreshCcw size={16} className="text-black" />
+                      Regenerate
+                    </button>
                     )}
                   </div>
                   <p className="mt-1">{msg.text}</p>
@@ -86,40 +90,38 @@ export default function ChatBox() {
                 </div>
               ))}
 
-              <div className="border rounded-md px-4 py-2 space-y-2 bg-white shadow-sm">
-                <Input
-                  className="text-sm border-none focus:ring-0 focus:outline-none"
-                  placeholder="Typing"
-                  value={inputMessage}
-                  onChange={(e) => setInputMessage(e.target.value)}
-                  onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), sendMessage())}
-                />
+              {/* Message Input Area */}
+<div className="relative rounded-2xl bg-white px-4 pt-3 pb-4 shadow-[0px_8px_24px_rgba(0,0,0,0.09)] border-[1.5px] border-[#D1D5DC]">
+    <input
+      type="text"
+      value={inputMessage}
+      onChange={(e) => setInputMessage(e.target.value)}
+      onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), sendMessage())}
+      className="w-full text-[14px] text-black font-medium leading-[20px] py-[6px] px-[12px] placeholder:text-black/70 caret-black pr-14 bg-transparent border-none outline-none ring-0 focus:outline-none focus:ring-0 focus:border-0 active:border-0"
+    />
 
-                <div className="flex items-center justify-between pt-1">
-                  <div className="flex items-center space-x-2 text-gray-500">
-                    <img src="/chatbox-icon.png" alt="custom icon" width={24} height={24} className="pr-1"/>
-                    <img src="/star-icon.png" alt="custom icon" width={24} height={24} className="pr-1"/>
-                    <Paperclip size={18} className="pr-1"/>
-                    <Smile size={18} className="pr-1"/>
-                    <AtSign size={18} className="pr-1"/>
-                    <img src="/square-pen-icon.png" alt="custom icon" width={24} height={24} className="pr-1"/>
-                    <div className="w-[1.5px] h-5 bg-gray-300 mx-3"></div>
-                    <div className="flex items-center space-x-1 text-xs">
-                      <img src="/double-start-icon.png" alt="custom icon" width={26} height={26} />
-                      <span className="text-black">Quick reply with AI</span>
-                    </div>
-                  </div>
 
-                  <Button
-                    onClick={sendMessage}
-                    variant="ghost"
-                    size="icon"
-                    className="text-gray-500 hover:text-gray-800"
-                  >
-                    <Image src="/send-icon.png" alt="send" width={36} height={36} />
-                  </Button>
-                </div>
-              </div>
+  <div className="absolute bottom-0 right-0 rounded-md pr-1 pb-1 flex items-center justify-center">
+    <button onClick={sendMessage} className="w-9 h-9 flex items-center justify-center">
+      <Image src="/send-icon.png" alt="send" width={48} height={48} />
+    </button>
+  </div>
+
+  <div className="mt-5 flex items-center space-x-2 text-gray-700 text-sm">
+    <Image src="/chatbox-icon.png" alt="icon" width={20} height={20} />
+    <Image src="/star-icon.png" alt="icon" width={24} height={24} />
+    <Image src="/file-icon.png" alt="icon" width={24} height={24} />
+    <Image src="/emoji-icon.png" alt="icon" width={24} height={24} />
+    <AtSign size={18} />
+    <Image src="/square-pen-icon.png" alt="icon" width={20} height={20} />
+    <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>
+    <div className="flex items-center space-x-1 text-xs">
+      <Image src="/double-star-icon.png" alt="icon" width={26} height={26} />
+      <span className="text-black font-medium">Quick reply with AI</span>
+    </div>
+  </div>
+</div>
+
             </CardContent>
           </Card>
         </div>
