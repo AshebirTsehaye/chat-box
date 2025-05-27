@@ -2,10 +2,8 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { Paperclip, Smile, RefreshCcw, AtSign } from 'lucide-react'
+import { RefreshCcw, AtSign } from 'lucide-react'
 
 interface Message {
   id: number
